@@ -21,18 +21,25 @@
   color: #61dafb;
 }
 
-.map-container {
-  height: 90%;
-  width: 90%;
-  border-radius: 1%;
+.map-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #141217;
+  color: #f5edfc;
 }
 
-.map-page {
-  width: 100vw;
-  height: 100vh;
+.map-container {
+  height: 90vh;
+  width: 95vw;
+  border-radius: 1%;
+  position: relative;
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav {
