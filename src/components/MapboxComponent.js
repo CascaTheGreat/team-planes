@@ -1,58 +1,55 @@
 import React, { useEffect, useState, useRef } from "react";
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 import arcs from "../data/arcs";
-import { MapboxOverlay } from "@deck.gl/mapbox";
 import { ArcLayer } from "@deck.gl/layers";
+import { DeckGL } from "@deck.gl/react";
+import { Map } from "react-map-gl";
+import "../App.css";
 
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+const accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-const MapboxComponent = () => {
-  const mapContainerRef = useRef(null);
-  const map = useRef(null);
+const INITIAL_VIEW_STATE = {
+  latitude: 37.7749,
+  longitude: -122.4194,
+  zoom: 5,
+  pitch: 0,
+  bearing: 0,
+};
 
-  const [lng] = useState(0);
-  const [lat] = useState(0);
-  const [zoom] = useState(2);
-
-  useEffect(() => {
-    map.current = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [lng, lat],
-      zoom: zoom,
-    });
-
-    map.current.addControl(new mapboxgl.NavigationControl(), "top-right");
-
-    const flightLayer = new MapboxOverlay({
-      interleaved: true,
-      layers: [
-        new ArcLayer({
-          id: "arc-layer",
-          data: arcs,
-          getSourcePosition: (d) => d.source,
-          getTargetPosition: (d) => d.target,
-          getSourceColor: [255, 0, 0],
-          getTargetColor: [0, 255, 0],
-          getWidth: 2,
-        }),
-      ],
-    });
-
-    map.current.on("load", () => {
-      map.current.resize();
-      map.current.addControl(flightLayer);
-    });
-
-    return () => map.current.remove();
-  }, [lat, lng, zoom]);
+function MapboxComponent() {
+  const layers = [
+    new ArcLayer({
+      id: "arc-layer",
+      data: arcs,
+      pickable: true,
+      getSourcePosition: (d) => d.source,
+      getTargetPosition: (d) => d.target,
+      getSourceColor: [255, 165, 0],
+      getTargetColor: [0, 191, 255],
+      getWidth: 1,
+    }),
+  ];
 
   return (
-    <div className="map-page">
-      <div className="map-container" ref={mapContainerRef}></div>
+    <div className="map-container">
+      <DeckGL
+        initialViewState={INITIAL_VIEW_STATE}
+        controller={true}
+        layers={layers}
+        getTooltip={({ object }) =>
+          object && `From: ${object.flyFrom}, To: ${object.flyTo}`
+        }
+        style={{ width: "100%", height: "99%" }}
+      >
+        <Map
+          mapboxAccessToken={
+            "pk.eyJ1IjoibGxlZGxvdzIyIiwiYSI6ImNsbmM5anpxYTA0OGwybW9udjQ1a3RhN2kifQ.4eYuK2hnBiMavi51EtheHQ"
+          }
+          mapStyle="mapbox://styles/mapbox/dark-v9"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </DeckGL>
     </div>
   );
-};
+}
 
 export default MapboxComponent;

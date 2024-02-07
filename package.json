@@ -5,6 +5,7 @@
   "dependencies": {
     "@deck.gl/layers": "^8.9.34",
     "@deck.gl/mapbox": "^8.9.34",
+    "@deck.gl/react": "^8.9.34",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
