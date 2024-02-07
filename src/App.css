@@ -1,16 +1,9 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: #141217;
+  overflow: hidden;
+  height: 100vh;
+  color: #f5edfc;
 }
 
 .App-header {
@@ -28,11 +21,78 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.map-container {
+  height: 90%;
+  width: 90%;
+  position: relative;
+  border-radius: 1%;
+}
+
+.map-page {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  margin: 0%;
+  width: 60%;
+  margin: 1vh auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 1vh 2vw;
+  overflow: hidden;
+  background-color: #282c34;
+  color: #7c1ed4;
+  border: none;
+  width: 50%;
+}
+
+.react-tabs__tab--selected {
+  background-color: #7c1ed4;
+  color: white;
+}
+
+.tab-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: #7c1ed4;
+  padding: 3%;
+  font-size: larger;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #f5edfc;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw;
+  border-color: #7c1ed4;
+  border-bottom-style: solid;
+  margin-bottom: 2%;
+}
+
+.link-wrapper {
+  padding-inline: 5%;
 }
