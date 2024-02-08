@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import SearchBar from "../components/SearchBar";
 
 const SearchPage = () => {
   return (
@@ -7,9 +8,9 @@ const SearchPage = () => {
       initial={{ opacity: 0, y: 200 }}
       animate={{ opacity: 1, y: 0, transition: { type: "tween", duration: 1 } }}
       exit={{ opacity: 0 }}
-      className="App"
+      className="search-page"
     >
-      <h1>Search Page</h1>
+      <SearchBar />
     </motion.div>
   );
 };

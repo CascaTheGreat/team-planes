@@ -23,8 +23,8 @@ function MapboxComponent() {
       pickable: true,
       getSourcePosition: (d) => d.source,
       getTargetPosition: (d) => d.target,
-      getSourceColor: [255, 165, 0],
-      getTargetColor: [0, 191, 255],
+      getSourceColor: [123, 30, 212],
+      getTargetColor: [30, 27, 34],
       getWidth: 3,
     }),
   ];
@@ -40,8 +40,8 @@ function MapboxComponent() {
             object && `From: ${object.flyFrom}, To: ${object.flyTo}`
           }
           style={{
-            width: "95%",
-            height: "95%",
+            width: "100%",
+            height: "100%",
             left: "auto",
             overflow: "hidden",
             borderRadius: "10px",
