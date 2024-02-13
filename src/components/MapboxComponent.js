@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import arcs from "../data/arcs";
+import arcs_data from "../data/arcs";
 import { ArcLayer } from "@deck.gl/layers";
 import { DeckGL } from "@deck.gl/react";
 import { Map } from "react-map-gl";
@@ -15,8 +15,15 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-function MapboxComponent() {
-  const layers = [
+function MapboxComponent({ filterDate, search }) {
+  let [arcs, setArcs] = useState(arcs_data);
+
+  // useEffect(() => {
+  //   let newArcs = arcs_data.filter((arc) => arc.date < filterDate);
+  //   setArcs(newArcs);
+  // }, [filterDate]);
+
+  let layers = [
     new ArcLayer({
       id: "arc-layer",
       data: arcs,
@@ -30,35 +37,33 @@ function MapboxComponent() {
   ];
 
   return (
-    <div className="map-page">
-      <div className="map-container">
-        <DeckGL
+    <div className="map-container">
+      <DeckGL
+        initialViewState={INITIAL_VIEW_STATE}
+        controller={true}
+        layers={layers}
+        getTooltip={({ object }) =>
+          object && `From: ${object.flyFrom}, To: ${object.flyTo}`
+        }
+        style={{
+          width: "100%",
+          height: "100%",
+          left: "auto",
+          overflow: "hidden",
+          borderRadius: "10px",
+        }}
+      >
+        <Map
+          attributionControl={false}
           initialViewState={INITIAL_VIEW_STATE}
-          controller={true}
-          layers={layers}
-          getTooltip={({ object }) =>
-            object && `From: ${object.flyFrom}, To: ${object.flyTo}`
+          mapboxAccessToken={
+            "pk.eyJ1IjoibGxlZGxvdzIyIiwiYSI6ImNsbmM5anpxYTA0OGwybW9udjQ1a3RhN2kifQ.4eYuK2hnBiMavi51EtheHQ"
           }
-          style={{
-            width: "100%",
-            height: "100%",
-            left: "auto",
-            overflow: "hidden",
-            borderRadius: "10px",
-          }}
-        >
-          <Map
-            attributionControl={false}
-            initialViewState={INITIAL_VIEW_STATE}
-            mapboxAccessToken={
-              "pk.eyJ1IjoibGxlZGxvdzIyIiwiYSI6ImNsbmM5anpxYTA0OGwybW9udjQ1a3RhN2kifQ.4eYuK2hnBiMavi51EtheHQ"
-            }
-            mapStyle="mapbox://styles/mapbox/dark-v9"
-            style={{ width: "100%", height: "100%" }}
-            preventStyleDiffing={true}
-          />
-        </DeckGL>
-      </div>
+          mapStyle="mapbox://styles/mapbox/dark-v9"
+          style={{ width: "100%", height: "100%" }}
+          preventStyleDiffing={true}
+        />
+      </DeckGL>
     </div>
   );
 }

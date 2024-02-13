@@ -1,6 +1,7 @@
 import React from "react";
 import SearchPage from "../pages/SearchPage";
 import MapPage from "../pages/MapPage";
+import AboutPage from "../pages/AboutPage";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -11,6 +12,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MapPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </AnimatePresence>
   );

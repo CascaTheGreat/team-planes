@@ -1,10 +1,14 @@
 import React from "react";
 import "../App.css";
 
-const SearchBar = () => {
+function SearchBar({ handler }) {
   return (
     <div className="search-bar">
-      <input type="text" placeholder="Search..." />
+      <input
+        type="text"
+        placeholder="Search..."
+        onChange={(event) => handler(event.target.value)}
+      />
       <button
         className="search-button"
         onClick={() => alert("Button clicked!")}
@@ -23,6 +27,6 @@ const SearchBar = () => {
       </button>
     </div>
   );
-};
+}
 
 export default SearchBar;
