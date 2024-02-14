@@ -29,15 +29,22 @@ function MapboxComponent({ searchFrom, searchTo }) {
       setArcs(arcs_data);
       return;
     }
-    if (searchFrom !== "") {
+    if (searchFrom !== "" && searchTo !== "") {
       let newArcs = arcs_data.filter((arc) =>
         arc.flyFrom.toUpperCase().includes(searchFrom.toUpperCase())
       );
       setArcs(newArcs);
     }
-    if (searchTo !== "") {
+    if (searchTo !== "" && searchFrom === "") {
       let newArcs = arcs_data.filter((arc) =>
         arc.flyTo.toUpperCase().includes(searchTo.toUpperCase())
+      );
+      setArcs(newArcs);
+    } else {
+      let newArcs = arcs_data.filter(
+        (arc) =>
+          arc.flyTo.toUpperCase().includes(searchTo.toUpperCase()) &&
+          arc.flyFrom.toUpperCase().includes(searchFrom.toUpperCase())
       );
       setArcs(newArcs);
     }
