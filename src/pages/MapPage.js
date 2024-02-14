@@ -3,15 +3,16 @@ import "../App.css";
 import React from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-import SearchBar from "../components/SearchBar";
+import MapSearchBar from "../components/MapSearchBar";
 import { motion } from "framer-motion";
 
 function MapPage() {
   const [date, setDate] = React.useState(20);
-  const [search, setSearch] = React.useState("");
+  const [source, setSource] = React.useState("");
+  const [dest, setDest] = React.useState("");
   return (
     <div className="map-page">
-      <MapboxComponent searchFrom={search} searchTo={""} />
+      <MapboxComponent searchFrom={source} searchTo={dest} />
       <RangeSlider
         id="date-slider"
         defaultValue={[0, 50]}
@@ -32,7 +33,7 @@ function MapPage() {
         className="search-page"
         style={{ position: "absolute", width: "100%", top: "-15px" }}
       >
-        <SearchBar handler={setSearch} />
+        <MapSearchBar handlerFrom={setSource} handlerTo={setDest} />
       </motion.div>
     </div>
   );

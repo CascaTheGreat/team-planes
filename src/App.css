@@ -252,3 +252,8 @@ input:focus {
 #date-slider .range-slider__range[data-active] {
   height: 25px;
 }
+
+.map-search-input {
+  width: 50%;
+  border-inline: #7c1ed4 solid 1px;
+}
