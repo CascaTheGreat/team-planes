@@ -4,6 +4,7 @@ import { ArcLayer } from "@deck.gl/layers";
 import { DeckGL } from "@deck.gl/react";
 import { Map } from "react-map-gl";
 import "../App.css";
+import { DataFilterExtension } from "@deck.gl/extensions";
 
 const accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -15,13 +16,32 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-function MapboxComponent({ filterDate, search }) {
+function MapboxComponent({ searchFrom, searchTo }) {
   let [arcs, setArcs] = useState(arcs_data);
 
   // useEffect(() => {
   //   let newArcs = arcs_data.filter((arc) => arc.date < filterDate);
   //   setArcs(newArcs);
   // }, [filterDate]);
+
+  useEffect(() => {
+    if (searchTo === "" && searchFrom === "") {
+      setArcs(arcs_data);
+      return;
+    }
+    if (searchFrom !== "") {
+      let newArcs = arcs_data.filter((arc) =>
+        arc.flyFrom.toUpperCase().includes(searchFrom.toUpperCase())
+      );
+      setArcs(newArcs);
+    }
+    if (searchTo !== "") {
+      let newArcs = arcs_data.filter((arc) =>
+        arc.flyTo.toUpperCase().includes(searchTo.toUpperCase())
+      );
+      setArcs(newArcs);
+    }
+  }, [searchFrom, searchTo]);
 
   let layers = [
     new ArcLayer({

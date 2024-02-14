@@ -11,7 +11,7 @@ function MapPage() {
   const [search, setSearch] = React.useState("");
   return (
     <div className="map-page">
-      <MapboxComponent filterDate={date} search={search} />
+      <MapboxComponent searchFrom={search} searchTo={""} />
       <RangeSlider
         id="date-slider"
         defaultValue={[0, 50]}
