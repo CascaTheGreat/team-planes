@@ -271,3 +271,15 @@ input:focus {
   max-height: 600px;
   overflow-y: scroll;
 }
+
+.search-load-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: #141217;
+  color: #7c1ed4;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+}

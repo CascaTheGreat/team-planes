@@ -21,7 +21,7 @@ function SearchPage() {
       }
     });
     setArcs(newArcs);
-  });
+  }, [search, arcs]);
 
   return (
     <motion.div
@@ -36,6 +36,18 @@ function SearchPage() {
         {arcs.slice(0, itemsPerPage).map((arc, index) => (
           <SearchCard key={index} flight={arc} />
         ))}
+        <div className="search-card-container__pagination">
+          <button
+            className="search-load-more"
+            onClick={() => {
+              if (arcs.length > itemsPerPage) {
+                setArcs(arcs.slice(itemsPerPage, itemsPerPage * 2));
+              }
+            }}
+          >
+            Load More
+          </button>
+        </div>
       </div>
     </motion.div>
   );
