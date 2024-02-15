@@ -2,39 +2,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar";
 import SearchCard from "../components/SearchCard";
-import arcData from "../data/arcs.json";
-import InfiniteScroll from "react-infinite-scroller";
-import "../App.css";
+import arcData from "../data/arcsMin.json";
 
 function SearchPage() {
   const [search, setSearch] = React.useState("");
+  let [arcs, setArcs] = React.useState(arcData);
   const itemsPerPage = 10;
-  const [hasMore, setHasMore] = React.useState(true);
-  const [arcs, setArcs] = React.useState(arcData.slice(0, itemsPerPage));
 
-  const showItems = (records, searchInput) => {
-    var items = [];
-    for (var i = 0; i < records.length; i++) {
-      /*
-      if (records[i].source.toLowerCase().includes(search.toLowerCase())) {
-        items.push(records[i]);
-      }
-      */
-      items.push(<SearchCard flight={records[i]} key={i} />);
-    }
-  };
-
-  const loadMore = () => {
-    if (arcs.length >= arcData.length) {
-      setHasMore(false);
+  React.useEffect(() => {
+    let newArcs = [];
+    if (search === "") {
+      setArcs(arcData);
       return;
     }
-    setTimeout(() => {
-      setArcs(
-        arcs.concat(arcData.slice(arcs.length, arcs.length + itemsPerPage))
-      );
-    }, 1000);
-  };
+    arcs.forEach((arc) => {
+      if (arc.flyFrom.toUpperCase().includes(search.toUpperCase())) {
+        newArcs.push(arc);
+      }
+    });
+    setArcs(newArcs);
+  });
 
   return (
     <motion.div
@@ -44,19 +31,12 @@ function SearchPage() {
       className="search-page"
     >
       <SearchBar handler={setSearch} />
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={loadMore}
-        hasMore={hasMore}
-        loader={<div className="loader">Loading ...</div>}
-        useWindow={false}
-      >
-        <div className="search-cards">
-          {arcs.map((arc, index) => {
-            return <SearchCard flight={arc} key={index} />;
-          })}
-        </div>
-      </InfiniteScroll>
+      <div className="search-results">Results for {search}</div>
+      <div className="search-card-container">
+        {arcs.slice(0, itemsPerPage).map((arc, index) => (
+          <SearchCard key={index} flight={arc} />
+        ))}
+      </div>
     </motion.div>
   );
 }

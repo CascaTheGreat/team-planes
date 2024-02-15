@@ -6,6 +6,8 @@
   height: 100vh;
   color: #f5edfc;
   font-family: "Work Sans", sans-serif;
+  scrollbar-width: auto;
+  scrollbar-color: #7c1ed4 #141217;
 }
 
 .App-header {
@@ -170,7 +172,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 2rem;
+  margin: 1rem;
   padding: 1rem;
   border-radius: 16px;
   background: #1e1b22;
@@ -255,5 +257,17 @@ input:focus {
 
 .map-search-input {
   width: 50%;
-  border-inline: #7c1ed4 solid 1px;
+  border-inline-start: #7c1ed4 solid 1px;
+}
+
+.search-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  height: 50%;
+  width: 100%;
+  max-height: 600px;
+  overflow-y: scroll;
 }
