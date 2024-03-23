@@ -8,7 +8,18 @@ function SearchPage() {
   const [airports, setAirports] = React.useState(airportData);
   const [search, setSearch] = React.useState("");
   const [itemsPerPage, setItemsPerPage] = React.useState(5);
-  console.log(airports[0]);
+
+  React.useEffect(() => {
+    if (search === "") {
+      setAirports(airportData);
+    } else {
+      setAirports(
+        airportData.filter((airport) =>
+          airport.iata.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }
+  }, [search]);
 
   return (
     <motion.div

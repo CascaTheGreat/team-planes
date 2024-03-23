@@ -12,18 +12,16 @@ function SearchCard({ airport }) {
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/light-v11",
+      style: "mapbox://styles/lledlow22/clu4ksxa4005z01nweknn0e3d",
       center: [airport.lon, airport.lat],
-      zoom: 9,
-      dragPan: false,
-      dragRotate: false,
-      scrollZoom: false,
-      doubleClickZoom: false,
+      zoom: 11,
+      interactive: false,
+      attributionControl: false,
     });
   }, [airport]);
 
   return (
-    <div className="search-card" onClick={() => alert("clicked")}>
+    <div className="search-card">
       <div className="search-card-header">
         <div className="search-card-title">{airport.name}</div>
         <div className="search-card-ranking">#{airport.rank}</div>
