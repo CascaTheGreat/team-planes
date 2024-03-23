@@ -1,24 +1,43 @@
 import React from "react";
+import mapboxgl from "mapbox-gl";
 
-function SearchCard({ flight }) {
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
+function SearchCard({ airport }) {
+  const mapContainer = React.useRef(null);
+  const map = React.useRef(null);
+
+  React.useEffect(() => {
+    if (map.current) return; // initialize map only once
+
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/mapbox/light-v11",
+      center: [airport.lon, airport.lat],
+      zoom: 9,
+      dragPan: false,
+      dragRotate: false,
+      scrollZoom: false,
+      doubleClickZoom: false,
+    });
+  }, [airport]);
+
   return (
     <div className="search-card" onClick={() => alert("clicked")}>
       <div className="search-card-header">
-        <div>
-          {flight.flyFrom}-{flight.flyTo}
-        </div>
-        <div className="search-card-ranking">#17</div>
+        <div className="search-card-title">{airport.name}</div>
+        <div className="search-card-ranking">#{airport.rank}</div>
       </div>
       <div className="search-card-body">
         <div className="search-card-body-text-wrapper">
           <div className="search-card-body-text">
-            <div>Departure: 10:00 AM</div>
+            Yearly Flights: {airport.numRoutes}
           </div>
           <div className="search-card-body-text">
-            <div>Price: $200</div>
+            Destinations: {airport.numDestinations}
           </div>
         </div>
-        <div className="search-card-body-image">Test</div>
+        <div ref={mapContainer} className="search-card-body-image"></div>
       </div>
     </div>
   );

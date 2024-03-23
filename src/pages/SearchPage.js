@@ -2,26 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar";
 import SearchCard from "../components/SearchCard";
-import arcData from "../data/arcsMin.json";
+import airportData from "../data/airports_data.json";
 
 function SearchPage() {
+  const [airports, setAirports] = React.useState(airportData);
   const [search, setSearch] = React.useState("");
-  let [arcs, setArcs] = React.useState(arcData);
-  const itemsPerPage = 10;
-
-  React.useEffect(() => {
-    let newArcs = [];
-    if (search === "") {
-      setArcs(arcData);
-      return;
-    }
-    arcs.forEach((arc) => {
-      if (arc.flyFrom.toUpperCase().includes(search.toUpperCase())) {
-        newArcs.push(arc);
-      }
-    });
-    setArcs(newArcs);
-  }, [search, arcs]);
+  const [itemsPerPage, setItemsPerPage] = React.useState(5);
+  console.log(airports[0]);
 
   return (
     <motion.div
@@ -31,17 +18,16 @@ function SearchPage() {
       className="search-page"
     >
       <SearchBar handler={setSearch} />
-      <div className="search-results">Results for {search}</div>
       <div className="search-card-container">
-        {arcs.slice(0, itemsPerPage).map((arc, index) => (
-          <SearchCard key={index} flight={arc} />
+        {airports.slice(0, itemsPerPage).map((airport, index) => (
+          <SearchCard key={index} airport={airport} />
         ))}
         <div className="search-card-container__pagination">
           <button
             className="search-load-more"
             onClick={() => {
-              if (arcs.length > itemsPerPage) {
-                setArcs(arcs.slice(itemsPerPage, itemsPerPage * 2));
+              if (airports.length > itemsPerPage) {
+                setAirports(airports.slice(itemsPerPage, itemsPerPage * 2));
               }
             }}
           >
