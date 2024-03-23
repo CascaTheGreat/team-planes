@@ -218,41 +218,35 @@ input:focus {
   background-color: #f5edfc;
 }
 
-#date-slider {
+.slider {
   width: 80%;
   height: 15px;
   border-radius: 50px;
   background: #f5edfc;
-  position: absolute;
-  bottom: 2%;
+  position: absolute !important;
+  transform: translateX(-50%);
+  bottom: 3%;
 }
 
-#date-slider .range-slider__range {
+.track {
   background: #7c1ed4;
   transition: height 0.3s;
   height: 105%;
   border-radius: 50px;
 }
 
-#date-slider .range-slider__thumb {
+.thumb {
   background: #7c1ed4;
   transition: transform 0.3s;
   width: 30px;
   height: 30px;
+  transform: translateY(-7px);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-#date-slider .range-slider__thumb[data-active] {
-  transform: translate(-50%, -50%) scale(1.25);
-}
-
-#date-slider .range-slider__thumb[data-lower] {
-  width: 0;
-  height: 0;
-  border: none;
-}
-
-#date-slider .range-slider__range[data-active] {
-  height: 25px;
+.thumb:focus {
+  outline: none;
 }
 
 .map-search-input {

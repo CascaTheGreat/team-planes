@@ -1,54 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
-import arcs_data from "../data/arcs";
+import arcs_data from "../data/arcs.json";
 import { ArcLayer } from "@deck.gl/layers";
 import { DeckGL } from "@deck.gl/react";
 import { Map } from "react-map-gl";
+import { getFlights } from "../helpers/firestore";
 import "../App.css";
-import { DataFilterExtension } from "@deck.gl/extensions";
-
-const accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const INITIAL_VIEW_STATE = {
   latitude: 37.7749,
   longitude: -122.4194,
   zoom: 5,
-  pitch: 0,
-  bearing: 0,
+  pitch: 45,
+  bearing: 20,
 };
 
-function MapboxComponent({ searchFrom, searchTo }) {
+function MapboxComponent({ searchFrom, searchTo, filterDate }) {
   let [arcs, setArcs] = useState(arcs_data);
 
-  // useEffect(() => {
-  //   let newArcs = arcs_data.filter((arc) => arc.date < filterDate);
-  //   setArcs(newArcs);
-  // }, [filterDate]);
-
   useEffect(() => {
-    if (searchTo === "" && searchFrom === "") {
-      setArcs(arcs_data);
-      return;
-    }
-    if (searchFrom !== "" && searchTo !== "") {
-      let newArcs = arcs_data.filter((arc) =>
-        arc.flyFrom.toUpperCase().includes(searchFrom.toUpperCase())
-      );
-      setArcs(newArcs);
-    }
-    if (searchTo !== "" && searchFrom === "") {
-      let newArcs = arcs_data.filter((arc) =>
-        arc.flyTo.toUpperCase().includes(searchTo.toUpperCase())
-      );
-      setArcs(newArcs);
-    } else {
-      let newArcs = arcs_data.filter(
-        (arc) =>
-          arc.flyTo.toUpperCase().includes(searchTo.toUpperCase()) &&
-          arc.flyFrom.toUpperCase().includes(searchFrom.toUpperCase())
-      );
-      setArcs(newArcs);
-    }
-  }, [searchFrom, searchTo]);
+    getFlights(filterDate, searchFrom, searchTo).then((data) => {
+      console.log(data);
+      setArcs(data);
+    });
+  }, [filterDate, searchFrom, searchTo]);
 
   let layers = [
     new ArcLayer({
@@ -56,10 +30,10 @@ function MapboxComponent({ searchFrom, searchTo }) {
       data: arcs,
       pickable: true,
       getSourcePosition: (d) => d.source,
-      getTargetPosition: (d) => d.target,
+      getTargetPosition: (d) => d.dest,
       getSourceColor: [123, 30, 212],
       getTargetColor: [30, 27, 34],
-      getWidth: 3,
+      getWidth: (d) => d.width,
     }),
   ];
 

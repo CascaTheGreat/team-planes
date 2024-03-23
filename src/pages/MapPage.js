@@ -1,27 +1,42 @@
 import MapboxComponent from "../components/MapboxComponent";
 import "../App.css";
 import React from "react";
-import RangeSlider from "react-range-slider-input";
-import "react-range-slider-input/dist/style.css";
+import ReactSlider from "react-slider";
 import MapSearchBar from "../components/MapSearchBar";
 import { motion } from "framer-motion";
+import { getFlights } from "../helpers/firestore";
 
 function MapPage() {
-  const [date, setDate] = React.useState(20);
+  const [date, setDate] = React.useState(2020);
   const [source, setSource] = React.useState("");
   const [dest, setDest] = React.useState("");
+
   return (
     <div className="map-page">
-      <MapboxComponent searchFrom={source} searchTo={dest} />
-      <RangeSlider
-        id="date-slider"
-        defaultValue={[0, 50]}
-        thumbDisabled={[true, false]}
-        rangeSlideDisabled={true}
-        onInput={(value, userInteraction) => {
-          setDate(value[1]);
+      <MapboxComponent searchFrom={source} searchTo={dest} filterDate={date} />
+      <motion.div
+        initial={{ opacity: 0, y: 200 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: { type: "tween", duration: 1 },
         }}
-      />
+        exit={{ opacity: 0 }}
+        className="date-slider"
+      >
+        <div className="date-text">Year: {date}</div>
+        <ReactSlider
+          className="slider"
+          thumbClassName="thumb"
+          trackClassName="track"
+          defaultValue={date}
+          min={1987}
+          max={2023}
+          onChange={(val) => setDate(val)}
+          renderThumb={(props, state) => <div {...props}></div>}
+          style={{ position: "absolute", top: "50%", left: "50%" }}
+        />
+      </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 200 }}
         animate={{
