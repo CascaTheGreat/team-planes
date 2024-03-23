@@ -10,6 +10,7 @@ function MapPage() {
   const [date, setDate] = React.useState(2020);
   const [source, setSource] = React.useState("");
   const [dest, setDest] = React.useState("");
+  const [hovered, setHovered] = React.useState(false);
 
   return (
     <div className="map-page">
@@ -24,18 +25,32 @@ function MapPage() {
         exit={{ opacity: 0 }}
         className="date-slider"
       >
-        <div className="date-text">Year: {date}</div>
-        <ReactSlider
-          className="slider"
-          thumbClassName="thumb"
-          trackClassName="track"
-          defaultValue={date}
-          min={1987}
-          max={2023}
-          onChange={(val) => setDate(val)}
-          renderThumb={(props, state) => <div {...props}></div>}
-          style={{ position: "absolute", top: "50%", left: "50%" }}
-        />
+        <label id="year-slider-label" className="date=text">
+          Label
+        </label>
+        <div
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <ReactSlider
+            className="slider"
+            thumbClassName="thumb"
+            trackClassName="track"
+            defaultValue={date}
+            min={1987}
+            max={2023}
+            onChange={(val) => setDate(val)}
+            renderThumb={(props, state) => (
+              <div {...props}>
+                {hovered ? <div className="label">{state.valueNow}</div> : null}
+              </div>
+            )}
+            style={{ position: "absolute", top: "50%", left: "50%" }}
+            ariaLabel="Year Slider"
+            ariaValuetext={(val) => `Year: ${val}`}
+            ariaLabelledby="year-slider-label"
+          />
+        </div>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 200 }}

@@ -19,7 +19,6 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
 
   useEffect(() => {
     getFlights(filterDate, searchFrom, searchTo).then((data) => {
-      console.log(data);
       setArcs(data);
     });
   }, [filterDate, searchFrom, searchTo]);

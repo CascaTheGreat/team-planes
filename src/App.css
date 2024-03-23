@@ -281,3 +281,18 @@ input:focus {
 .track-1 {
   background: #f5edfc;
 }
+
+.date-text {
+  font-size: 1.5rem;
+  color: #7c1ed4;
+}
+
+.label {
+  transition: all 0.3s;
+  background-color: #7c1ed4;
+  padding: 10px;
+  border-radius: 4px;
+  position: absolute;
+  top: -50px;
+  left: -50%;
+}
