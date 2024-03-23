@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import arcs_data from "../data/arcs.json";
 import { ArcLayer } from "@deck.gl/layers";
 import { DeckGL } from "@deck.gl/react";

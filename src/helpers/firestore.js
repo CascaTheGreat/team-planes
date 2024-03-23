@@ -19,13 +19,10 @@ export const jsonToFirestore = async () => {
 export const getFlights = async (year, from = "", to = "") => {
   let data = [];
   const q = collection(firestore, `${year}`);
-  if (from === to && from !== "") {
-    return data;
-  }
   let queryRef = q;
   if (from === "" && to !== "") {
     queryRef = query(queryRef, where("flyTo", "==", to));
-  } else {
+  } else if (from !== "" && to === "") {
     queryRef = query(queryRef, where("flyFrom", "==", from));
   }
   const querySnapshot = await getDocs(queryRef);
