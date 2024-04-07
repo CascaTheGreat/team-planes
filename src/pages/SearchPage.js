@@ -13,11 +13,25 @@ function SearchPage() {
     if (search === "") {
       setAirports(airportData);
     } else {
-      setAirports(
-        airportData.filter((airport) =>
-          airport.iata.toLowerCase().includes(search.toLowerCase())
-        )
-      );
+      let airportsFiltered = [];
+      for (let i = 0; i < airportData.length; i++) {
+        if (airportData[i].name.toLowerCase().includes(search.toLowerCase())) {
+          airportsFiltered.push(airportData[i]);
+        } else if (
+          airportData[i].city.toLowerCase().includes(search.toLowerCase())
+        ) {
+          airportsFiltered.push(airportData[i]);
+        } else if (
+          airportData[i].iata.toLowerCase().includes(search.toLowerCase())
+        ) {
+          airportsFiltered.push(airportData[i]);
+        } else if (
+          airportData[i].icao.toLowerCase().includes(search.toLowerCase())
+        ) {
+          airportsFiltered.push(airportData[i]);
+        }
+      }
+      setAirports(airportsFiltered);
     }
   }, [search]);
 

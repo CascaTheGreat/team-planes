@@ -4,6 +4,7 @@ import { ArcLayer } from "@deck.gl/layers";
 import { DeckGL } from "@deck.gl/react";
 import { Map } from "react-map-gl";
 import { getFlights } from "../helpers/firestore";
+import { interpolate } from "color-interpolate";
 import "../App.css";
 
 const INITIAL_VIEW_STATE = {
@@ -23,6 +24,18 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
     });
   }, [filterDate, searchFrom, searchTo]);
 
+  function interpolateColor(value) {
+    let colors = [
+      "rgb(186, 99, 99)",
+      "rgb(210, 136, 50)",
+      "rgb(144, 194, 144)",
+    ];
+
+    let colormap = interpolate(colors);
+
+    return colormap(value);
+  }
+
   let layers = [
     new ArcLayer({
       id: "arc-layer",
@@ -30,9 +43,17 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
       pickable: true,
       getSourcePosition: (d) => d.source,
       getTargetPosition: (d) => d.dest,
-      getSourceColor: [123, 30, 212],
-      getTargetColor: [30, 27, 34],
-      getWidth: (d) => d.width,
+      getWidth: (d) => Math.max(Math.floor((d.num_flights / 2177) * 10), 1),
+      getSourceColor: (d) => [
+        144,
+        Math.floor((d.num_flights / 2177) * 194),
+        144,
+      ],
+      getTargetColor: (d) => [
+        144,
+        Math.floor((d.num_flights / 2177) * 194),
+        144,
+      ],
     }),
   ];
 

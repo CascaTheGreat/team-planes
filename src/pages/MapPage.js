@@ -26,7 +26,7 @@ function MapPage() {
         className="date-slider"
       >
         <label id="year-slider-label" className="date=text">
-          Label
+          Year: {date}
         </label>
         <div
           onMouseEnter={() => setHovered(true)}
@@ -42,7 +42,19 @@ function MapPage() {
             onChange={(val) => setDate(val)}
             renderThumb={(props, state) => (
               <div {...props}>
-                {hovered ? <div className="label">{state.valueNow}</div> : null}
+                {hovered ? (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: { type: "tween", duration: 0.3 },
+                    }}
+                    exit={{ opacity: 0 }}
+                    className="label"
+                  >
+                    {state.valueNow}
+                  </motion.div>
+                ) : null}
               </div>
             )}
             style={{ position: "absolute", top: "50%", left: "50%" }}

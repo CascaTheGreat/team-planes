@@ -4,10 +4,10 @@
   background-color: #141217;
   overflow: hidden;
   height: 100vh;
-  color: #f5edfc;
+  color: #f0faf3;
   font-family: "Work Sans", sans-serif;
   scrollbar-width: auto;
-  scrollbar-color: #7c1ed4 #141217;
+  scrollbar-color: #90c290 #141217;
 }
 
 .App-header {
@@ -31,7 +31,7 @@
   align-items: center;
   justify-content: center;
   background-color: #141217;
-  color: #f5edfc;
+  color: #f0faf3;
 }
 
 .map-container {
@@ -59,7 +59,7 @@
 }
 
 .react-tabs__tab--selected {
-  background-color: #7c1ed4;
+  background-color: #90c290;
   color: white;
 }
 
@@ -72,14 +72,14 @@
 
 a {
   text-decoration: none;
-  color: #f5edfc;
+  color: #f0faf3;
   padding: 0.5%;
   padding-inline: 3%;
   font-size: 1rem;
 }
 
 a:hover {
-  color: #7c1ed4;
+  color: #90c290;
   transition: 0.3s;
 }
 
@@ -120,7 +120,7 @@ li {
   z-index: 1;
   width: 100%;
   background-color: #141217;
-  border-bottom: #7c1ed4 solid;
+  border-bottom: #90c290 solid;
   border-width: 2px;
   font-weight: 400;
   justify-content: center;
@@ -141,7 +141,7 @@ li {
   overflow: hidden;
   display: inline-flex;
   height: 50px;
-  border: #7c1ed4 solid 3px;
+  border: #90c290 solid 3px;
 }
 
 input {
@@ -149,7 +149,7 @@ input {
   width: 95%;
   border: none;
   padding: 0 20px;
-  color: #7c1ed4;
+  color: #90c290;
   background-color: #141217;
   font-size: 1.2rem;
   font-weight: 300;
@@ -164,7 +164,7 @@ input:focus {
   border: none;
   width: 7%;
   background-color: #141217;
-  color: #f5edfc;
+  color: #f0faf3;
   cursor: pointer;
 }
 
@@ -176,13 +176,13 @@ input:focus {
   padding: 1rem;
   border-radius: 16px;
   background: #1e1b22;
-  color: #f5edfc;
-  border: #7c1ed4 solid 3px;
+  color: #f0faf3;
+  border: #90c290 solid 3px;
   width: 60%;
 }
 
 .search-card:hover {
-  background: #7c1ed4;
+  background: #90c290;
   transition: 0.3s;
 }
 
@@ -204,7 +204,7 @@ input:focus {
 .search-card-ranking {
   font-weight: normal;
   font-size: 1.5rem;
-  color: #7c1ed4;
+  color: #90c290;
 }
 
 .search-card-body {
@@ -221,7 +221,7 @@ input:focus {
   width: 40vw;
   height: 40vh;
   border-radius: 16px;
-  background-color: #f5edfc;
+  background-color: #f0faf3;
 }
 
 .search-card-body-text {
@@ -233,21 +233,21 @@ input:focus {
   width: 80%;
   height: 15px;
   border-radius: 50px;
-  background: #f5edfc;
+  background: #f0faf3;
   position: absolute !important;
   transform: translateX(-50%);
   bottom: 3%;
 }
 
 .track {
-  background: #7c1ed4;
+  background: #90c290;
   transition: height 0.3s;
   height: 105%;
   border-radius: 50px;
 }
 
 .thumb {
-  background: #7c1ed4;
+  background: #90c290;
   transition: transform 0.3s;
   width: 30px;
   height: 30px;
@@ -262,7 +262,7 @@ input:focus {
 
 .map-search-input {
   width: 50%;
-  border-inline-start: #7c1ed4 solid 1px;
+  border-inline-start: #90c290 solid 1px;
 }
 
 .search-card-container {
@@ -282,24 +282,24 @@ input:focus {
   align-items: center;
   margin-bottom: 1rem;
   background-color: #141217;
-  color: #7c1ed4;
+  color: #90c290;
   border: none;
   font-size: medium;
   cursor: pointer;
 }
 
 .track-1 {
-  background: #f5edfc;
+  background: #f0faf3;
 }
 
 .date-text {
   font-size: 1.5rem;
-  color: #7c1ed4;
+  color: #90c290;
 }
 
 .label {
   transition: all 0.3s;
-  background-color: #7c1ed4;
+  background-color: #90c290;
   padding: 10px;
   border-radius: 4px;
   position: absolute;
