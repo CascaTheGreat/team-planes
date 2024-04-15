@@ -3,9 +3,11 @@ import arcs_data from "../data/arcs.json";
 import { ArcLayer } from "@deck.gl/layers";
 import { DeckGL } from "@deck.gl/react";
 import { Map } from "react-map-gl";
-import { getFlights } from "../helpers/firestore";
+import { getFlights, compareFlights } from "../helpers/firestore";
 import { interpolate } from "color-interpolate";
 import "../App.css";
+import { type } from "@testing-library/user-event/dist/type";
+import { set } from "firebase/database";
 
 const INITIAL_VIEW_STATE = {
   latitude: 37.7749,
@@ -16,46 +18,61 @@ const INITIAL_VIEW_STATE = {
 };
 
 function MapboxComponent({ searchFrom, searchTo, filterDate }) {
-  let [arcs, setArcs] = useState(arcs_data);
+  const [arcs, setArcs] = useState(arcs_data);
+  const [max, setMax] = useState(2177);
 
   useEffect(() => {
-    getFlights(filterDate, searchFrom, searchTo).then((data) => {
-      setArcs(data);
-    });
+    //Checks if the filterDate is an array or not
+    if (!Array.isArray(filterDate)) {
+      getFlights(filterDate, searchFrom, searchTo).then((data) => {
+        setArcs(data);
+      });
+    } else {
+      compareFlights(filterDate, searchFrom, searchTo).then((data) => {
+        console.log(data);
+        setArcs(data.arcs);
+        setMax(data.max);
+      });
+    }
   }, [filterDate, searchFrom, searchTo]);
 
-  function interpolateColor(value) {
-    let colors = [
-      "rgb(186, 99, 99)",
-      "rgb(210, 136, 50)",
-      "rgb(144, 194, 144)",
+  let layers = [];
+  if (!Array.isArray(filterDate)) {
+    layers = [
+      new ArcLayer({
+        id: "arc-layer",
+        data: arcs,
+        pickable: true,
+        getSourcePosition: (d) => d.source,
+        getTargetPosition: (d) => d.dest,
+        getWidth: (d) => Math.max(Math.floor((d.num_flights / 2177) * 10), 1),
+        getSourceColor: (d) => [
+          144,
+          Math.floor((d.num_flights / 2177) * 194),
+          144,
+        ],
+        getTargetColor: (d) => [
+          144,
+          Math.floor((d.num_flights / 2177) * 194),
+          144,
+        ],
+      }),
     ];
-
-    let colormap = interpolate(colors);
-
-    return colormap(value);
+  } else {
+    layers = [
+      new ArcLayer({
+        id: "arc-layer",
+        data: arcs,
+        pickable: true,
+        getSourcePosition: (d) => d.source,
+        getTargetPosition: (d) => d.dest,
+        getWidth: (d) =>
+          Math.max(Math.floor((Math.abs(d.num_flights) / (max / 2)) * 10), 1),
+        getSourceColor: (d) => d.color,
+        getTargetColor: (d) => d.color,
+      }),
+    ];
   }
-
-  let layers = [
-    new ArcLayer({
-      id: "arc-layer",
-      data: arcs,
-      pickable: true,
-      getSourcePosition: (d) => d.source,
-      getTargetPosition: (d) => d.dest,
-      getWidth: (d) => Math.max(Math.floor((d.num_flights / 2177) * 10), 1),
-      getSourceColor: (d) => [
-        144,
-        Math.floor((d.num_flights / 2177) * 194),
-        144,
-      ],
-      getTargetColor: (d) => [
-        144,
-        Math.floor((d.num_flights / 2177) * 194),
-        144,
-      ],
-    }),
-  ];
 
   return (
     <div className="map-container">
@@ -64,7 +81,12 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
         controller={true}
         layers={layers}
         getTooltip={({ object }) =>
-          object && `From: ${object.flyFrom}, To: ${object.flyTo}`
+          object &&
+          `From: ${object.flyFrom}, To: ${object.flyTo}${
+            !Array.isArray(filterDate)
+              ? `, Num Flights: ${object.num_flights}`
+              : `, Change: ${object.change.toFixed(2)}%`
+          }`
         }
         style={{
           width: "100%",

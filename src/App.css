@@ -306,3 +306,47 @@ input:focus {
   top: -50px;
   left: -50%;
 }
+
+.compare-toggle {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+}
+
+.compare-toggle button {
+  background-color: #90c290;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  height: 5vh;
+  width: 10vh;
+  cursor: pointer;
+}
+
+.compare-toggle .active {
+  background-color: #90c290;
+  color: #141217;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #90c290;
+  box-shadow: inset 6px 6px 15px #668a66, inset -6px -6px 15px #bafaba;
+}
+
+.compare-toggle .inactive {
+  color: #141217;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #cccccc;
+}
+
+.double-slider .track-0 {
+  background: #f0faf3;
+}
+
+.double-slider .track-1 {
+  background: #90c290;
+}
+
+.double-slider .track-2 {
+  background: #f0faf3;
+}
