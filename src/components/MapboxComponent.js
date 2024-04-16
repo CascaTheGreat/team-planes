@@ -4,10 +4,7 @@ import { ArcLayer } from "@deck.gl/layers";
 import { DeckGL } from "@deck.gl/react";
 import { Map } from "react-map-gl";
 import { getFlights, compareFlights } from "../helpers/firestore";
-import { interpolate } from "color-interpolate";
 import "../App.css";
-import { type } from "@testing-library/user-event/dist/type";
-import { set } from "firebase/database";
 
 const INITIAL_VIEW_STATE = {
   latitude: 37.7749,
@@ -109,7 +106,7 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
           mapboxAccessToken={
             "pk.eyJ1IjoibGxlZGxvdzIyIiwiYSI6ImNsbmM5anpxYTA0OGwybW9udjQ1a3RhN2kifQ.4eYuK2hnBiMavi51EtheHQ"
           }
-          mapStyle="mapbox://styles/mapbox/dark-v9"
+          mapStyle="mapbox://styles/lledlow22/clv2kmkab01ql01nu0evj0o2n"
           style={{ width: "100%", height: "100%" }}
           preventStyleDiffing={true}
         />
