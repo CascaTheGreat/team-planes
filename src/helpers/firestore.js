@@ -20,7 +20,12 @@ export const getFlights = async (year, from = "", to = "") => {
   let data = [];
   const q = collection(firestore, `${year}`);
   let queryRef = q;
-  if (from === "" && to !== "") {
+  if (from !== "" && to !== "") {
+    queryRef = query(
+      query(queryRef, where("flyFrom", "==", from)),
+      where("flyTo", "==", to)
+    );
+  } else if (from === "" && to !== "") {
     queryRef = query(queryRef, where("flyTo", "==", to));
   } else if (from !== "" && to === "") {
     queryRef = query(queryRef, where("flyFrom", "==", from));
@@ -29,9 +34,6 @@ export const getFlights = async (year, from = "", to = "") => {
   querySnapshot.forEach((doc) => {
     data.push(doc.data());
   });
-  if (from !== "" && to !== "") {
-    data = data.filter((entry) => entry["flyTo"] === to);
-  }
   return data;
 };
 

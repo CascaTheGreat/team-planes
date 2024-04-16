@@ -43,6 +43,7 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
         id: "arc-layer",
         data: arcs,
         pickable: true,
+        widthMaxPixels: 15,
         getSourcePosition: (d) => d.source,
         getTargetPosition: (d) => d.dest,
         getWidth: (d) => Math.max(Math.floor((d.num_flights / 2177) * 10), 1),
@@ -56,6 +57,7 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
           Math.floor((d.num_flights / 2177) * 194),
           144,
         ],
+        greatCircle: true,
       }),
     ];
   } else {
@@ -64,10 +66,15 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
         id: "arc-layer",
         data: arcs,
         pickable: true,
+        greatCircle: true,
+        widthMaxPixels: 15,
         getSourcePosition: (d) => d.source,
         getTargetPosition: (d) => d.dest,
         getWidth: (d) =>
-          Math.max(Math.floor((Math.abs(d.num_flights) / (max / 2)) * 10), 1),
+          Math.max(
+            Math.floor(Math.pow(Math.abs(d.num_flights) / (max / 2), 2) * 10),
+            1
+          ),
         getSourceColor: (d) => d.color,
         getTargetColor: (d) => d.color,
       }),

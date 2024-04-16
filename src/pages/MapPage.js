@@ -13,6 +13,16 @@ function MapPage() {
   const [dest, setDest] = React.useState("");
   const [hovered, setHovered] = React.useState(false);
   const [compare, setCompare] = React.useState(false);
+  const events = {
+    2020: "COVID-19 Pandemic Disrupts Air Travel",
+    2010: "Delta Acquires Northwest Airlines, Becomes World's Largest Airline",
+    2001: "9/11 Attacks on World Trade Center and Pentagon",
+    1996: "Delta Express, a Low-Cost Carrier, Begins Operations",
+    2003: "Delta Begins Codesharing with Continental and Northwest Airlines",
+    2000: "Delta Founds the SkyTeam Alliance",
+    2005: "Delta Files for Bankruptcy",
+    2007: "Delta Emerges from Bankruptcy",
+  };
 
   return (
     <div className="map-page">
@@ -43,6 +53,7 @@ function MapPage() {
         <label id="year-slider-label" className="date=text">
           Year: {date}
         </label>
+        {events[date] && <div className="event-text">{events[date]}</div>}
         <div
           onMouseEnter={() => {
             setHovered(true);
