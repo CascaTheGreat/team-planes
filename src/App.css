@@ -364,3 +364,22 @@ input:focus {
   max-width: 80%;
   white-space: nowrap;
 }
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.about-text {
+  width: 60%;
+  font-size: 1.5rem;
+  color: #f0faf3;
+  padding: 1%;
+}
+
+.about-text a {
+  color: #90c290;
+}
