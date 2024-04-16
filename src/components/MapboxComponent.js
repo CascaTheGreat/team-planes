@@ -101,9 +101,7 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
         <Map
           attributionControl={false}
           initialViewState={INITIAL_VIEW_STATE}
-          mapboxAccessToken={
-            "pk.eyJ1IjoibGxlZGxvdzIyIiwiYSI6ImNsbmM5anpxYTA0OGwybW9udjQ1a3RhN2kifQ.4eYuK2hnBiMavi51EtheHQ"
-          }
+          mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle="mapbox://styles/lledlow22/clv2kmkab01ql01nu0evj0o2n"
           style={{ width: "100%", height: "100%" }}
           preventStyleDiffing={true}
