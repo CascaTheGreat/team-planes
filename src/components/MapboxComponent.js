@@ -54,7 +54,6 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
           Math.floor((d.num_flights / 2177) * 194),
           144,
         ],
-        greatCircle: true,
       }),
     ];
   } else {
@@ -63,7 +62,6 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
         id: "arc-layer",
         data: arcs,
         pickable: true,
-        greatCircle: true,
         widthMaxPixels: 15,
         getSourcePosition: (d) => d.source,
         getTargetPosition: (d) => d.dest,
@@ -109,6 +107,7 @@ function MapboxComponent({ searchFrom, searchTo, filterDate }) {
           mapStyle="mapbox://styles/lledlow22/clv2kmkab01ql01nu0evj0o2n"
           style={{ width: "100%", height: "100%" }}
           preventStyleDiffing={true}
+          projection={"mercator"}
         />
       </DeckGL>
     </div>
