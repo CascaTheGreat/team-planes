@@ -313,6 +313,23 @@ input:focus {
   right: 8%;
 }
 
+@media (max-width: 768px) {
+  .compare-toggle {
+    position: relative;
+    top: auto;
+    right: 5%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .compare-toggle button {
+    height: 4vh;
+    width: 8vh;
+  }
+}
+
 .compare-toggle button {
   background-color: #90c290;
   color: #fff;

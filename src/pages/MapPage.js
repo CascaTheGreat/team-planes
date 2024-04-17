@@ -59,6 +59,8 @@ function MapPage() {
             setHovered(true);
           }}
           onMouseLeave={() => setHovered(false)}
+          onMouseDown={() => setHovered(true)}
+          onMouseUp={() => setHovered(false)}
         >
           {!compare ? (
             <SingleSlider

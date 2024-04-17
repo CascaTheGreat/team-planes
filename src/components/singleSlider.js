@@ -3,6 +3,7 @@ import ReactSlider from "react-slider";
 import { motion } from "framer-motion";
 
 const SingleSlider = ({ setDate, hovered, sliderDate }) => {
+  const [hoveredChild, setHovered] = useState(hovered);
   return (
     <ReactSlider
       className="slider"
@@ -13,8 +14,8 @@ const SingleSlider = ({ setDate, hovered, sliderDate }) => {
       max={2023}
       onChange={(val) => setDate(val)}
       renderThumb={(props, state) => (
-        <div {...props}>
-          {hovered ? (
+        <div {...props} onMouseEnter={() => setHovered(true)}>
+          {hoveredChild ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{
@@ -33,6 +34,10 @@ const SingleSlider = ({ setDate, hovered, sliderDate }) => {
       ariaLabel="Year Slider"
       ariaValuetext={(val) => `Year: ${val}`}
       ariaLabelledby="year-slider-label"
+      onBeforeChange={() => setHovered(true)}
+      onAfterChange={() => {
+        setTimeout(() => setHovered(false), 2000);
+      }}
     />
   );
 };
