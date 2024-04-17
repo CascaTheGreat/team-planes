@@ -388,7 +388,7 @@ input:focus {
   font-size: 1rem;
   padding: 5px;
   display: flex;
-  width: 70%;
+  width: 90%;
 }
 
 .search-card-forecast-year {
@@ -399,4 +399,13 @@ input:focus {
 .forecasts {
   display: flex;
   flex-direction: column;
+}
+
+.search-card-forecast-change {
+  color: #90c290;
+  padding-left: 5%;
+}
+
+.negative {
+  color: #b90000;
 }

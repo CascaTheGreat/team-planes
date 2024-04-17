@@ -6,14 +6,18 @@
     "city": "Atlanta",
     "lat": 33.6366996111,
     "lon": -84.427864,
-    "numRoutes": 364088,
+    "numRoutes": 219837,
     "numDestinations": 127,
     "rank": 1,
     "flights24": 219961,
     "flights25": 226480,
     "flights26": 233905,
     "flights27": 242244,
-    "flights28": 251499
+    "flights28": 251499,
+    "percentChange": [
+      0.0005643724889, 0.02963568794, 0.03278441769, 0.03565334213,
+      0.03820328524
+    ]
   },
   {
     "iata": "SLC",
@@ -187,14 +191,17 @@
     "city": "Miami",
     "lat": 25.7953611111,
     "lon": -80.2901158333,
-    "numRoutes": 17496,
+    "numRoutes": 9918,
     "numDestinations": 8,
     "rank": 17,
     "flights24": 10773,
     "flights25": 11078,
     "flights26": 11541,
     "flights27": 12007,
-    "flights28": 12475
+    "flights28": 12475,
+    "percentChange": [
+      0.08621981037, 0.02835393163, 0.04174116708, 0.04041223826, 0.03902056954
+    ]
   },
   {
     "iata": "AUS",
@@ -203,14 +210,17 @@
     "city": "Austin",
     "lat": 30.1945272222,
     "lon": -97.6698761111,
-    "numRoutes": 17187,
+    "numRoutes": 10752,
     "numDestinations": 9,
     "rank": 18,
     "flights24": 12509,
     "flights25": 13417,
     "flights26": 14202,
     "flights27": 14847,
-    "flights28": 15340
+    "flights28": 15340,
+    "percentChange": [
+      0.1634524167, 0.07256432717, 0.05851824075, 0.04541002797, 0.03322911698
+    ]
   },
   {
     "iata": "RDU",
@@ -219,14 +229,17 @@
     "city": "Raleigh/Durham",
     "lat": 35.8776388889,
     "lon": -78.7874722222,
-    "numRoutes": 16974,
+    "numRoutes": 11365,
     "numDestinations": 14,
     "rank": 19,
     "flights24": 11025,
     "flights25": 11830,
     "flights26": 12698,
     "flights27": 13628,
-    "flights28": 14621
+    "flights28": 14621,
+    "percentChange": [
+      -0.02990377752, 0.07304867225, 0.07338051767, 0.07325700499, 0.07281610639
+    ]
   },
   {
     "iata": "SFO",
@@ -323,14 +336,18 @@
     "city": "Charlotte",
     "lat": 35.21375,
     "lon": -80.9490555556,
-    "numRoutes": 9816,
+    "numRoutes": 5886,
     "numDestinations": 4,
     "rank": 28,
     "flights24": 5786,
     "flights25": 5820,
     "flights26": 5847,
     "flights27": 5867,
-    "flights28": 5880
+    "flights28": 5880,
+    "percentChange": [
+      -0.01702783285, 0.005864915912, 0.004645873262, 0.003443824896,
+      0.002255425151
+    ]
   },
   {
     "iata": "MSY",

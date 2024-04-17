@@ -41,11 +41,25 @@ function SearchCard({ airport }) {
                   <div className="search-card-forecast-year">
                     {airport.flights24} Flights
                   </div>
+                  <div
+                    className={`search-card-forecast-change ${
+                      airport.percentChange[0] < 0 ? "negative" : ""
+                    }`}
+                  >
+                    {(airport.percentChange[0] * 100).toFixed(2)}%
+                  </div>
                 </div>
                 <div className="search-card-forecast">
                   2025:
                   <div className="search-card-forecast-year">
                     {airport.flights25} Flights
+                  </div>
+                  <div
+                    className={`search-card-forecast-change ${
+                      airport.percentChange[1] < 0 ? "negative" : ""
+                    }`}
+                  >
+                    {(airport.percentChange[1] * 100).toFixed(2)}%
                   </div>
                 </div>
                 <div className="search-card-forecast">
@@ -53,17 +67,38 @@ function SearchCard({ airport }) {
                   <div className="search-card-forecast-year">
                     {airport.flights26} Flights
                   </div>
+                  <div
+                    className={`search-card-forecast-change ${
+                      airport.percentChange[2] < 0 ? "negative" : ""
+                    }`}
+                  >
+                    {(airport.percentChange[2] * 100).toFixed(2)}%
+                  </div>
                 </div>
                 <div className="search-card-forecast">
                   2027:
                   <div className="search-card-forecast-year">
                     {airport.flights27} Flights
                   </div>
+                  <div
+                    className={`search-card-forecast-change ${
+                      airport.percentChange[3] < 0 ? "negative" : ""
+                    }`}
+                  >
+                    {(airport.percentChange[3] * 100).toFixed(2)}%
+                  </div>
                 </div>
                 <div className="search-card-forecast">
                   2028:
                   <div className="search-card-forecast-year">
                     {airport.flights28} Flights
+                  </div>
+                  <div
+                    className={`search-card-forecast-change ${
+                      airport.percentChange[4] < 0 ? "negative" : ""
+                    }`}
+                  >
+                    {(airport.percentChange[4] * 100).toFixed(2)}%
                   </div>
                 </div>
               </div>
