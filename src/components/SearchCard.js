@@ -8,8 +8,6 @@ function SearchCard({ airport }) {
   const map = React.useRef(null);
 
   React.useEffect(() => {
-    if (map.current) return; // initialize map only once
-
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/lledlow22/clu4ksxa4005z01nweknn0e3d",
@@ -34,6 +32,43 @@ function SearchCard({ airport }) {
           <div className="search-card-body-text">
             Destinations: {airport.numDestinations}
           </div>
+          {airport.flights24 && (
+            <>
+              <div className="search-card-body-text forecasts">
+                Annual Flight Trend Forecasts
+                <div className="search-card-forecast">
+                  2024:
+                  <div className="search-card-forecast-year">
+                    {airport.flights24} Flights
+                  </div>
+                </div>
+                <div className="search-card-forecast">
+                  2025:
+                  <div className="search-card-forecast-year">
+                    {airport.flights25} Flights
+                  </div>
+                </div>
+                <div className="search-card-forecast">
+                  2026:
+                  <div className="search-card-forecast-year">
+                    {airport.flights26} Flights
+                  </div>
+                </div>
+                <div className="search-card-forecast">
+                  2027:
+                  <div className="search-card-forecast-year">
+                    {airport.flights27} Flights
+                  </div>
+                </div>
+                <div className="search-card-forecast">
+                  2028:
+                  <div className="search-card-forecast-year">
+                    {airport.flights28} Flights
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
         <div ref={mapContainer} className="search-card-body-image"></div>
       </div>

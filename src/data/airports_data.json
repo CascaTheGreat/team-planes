@@ -8,7 +8,12 @@
     "lon": -84.427864,
     "numRoutes": 364088,
     "numDestinations": 127,
-    "rank": 1
+    "rank": 1,
+    "flights24": 219961,
+    "flights25": 226480,
+    "flights26": 233905,
+    "flights27": 242244,
+    "flights28": 251499
   },
   {
     "iata": "SLC",
@@ -184,7 +189,12 @@
     "lon": -80.2901158333,
     "numRoutes": 17496,
     "numDestinations": 8,
-    "rank": 17
+    "rank": 17,
+    "flights24": 10773,
+    "flights25": 11078,
+    "flights26": 11541,
+    "flights27": 12007,
+    "flights28": 12475
   },
   {
     "iata": "AUS",
@@ -195,7 +205,12 @@
     "lon": -97.6698761111,
     "numRoutes": 17187,
     "numDestinations": 9,
-    "rank": 18
+    "rank": 18,
+    "flights24": 12509,
+    "flights25": 13417,
+    "flights26": 14202,
+    "flights27": 14847,
+    "flights28": 15340
   },
   {
     "iata": "RDU",
@@ -206,7 +221,12 @@
     "lon": -78.7874722222,
     "numRoutes": 16974,
     "numDestinations": 14,
-    "rank": 19
+    "rank": 19,
+    "flights24": 11025,
+    "flights25": 11830,
+    "flights26": 12698,
+    "flights27": 13628,
+    "flights28": 14621
   },
   {
     "iata": "SFO",
@@ -305,7 +325,12 @@
     "lon": -80.9490555556,
     "numRoutes": 9816,
     "numDestinations": 4,
-    "rank": 28
+    "rank": 28,
+    "flights24": 5786,
+    "flights25": 5820,
+    "flights26": 5847,
+    "flights27": 5867,
+    "flights28": 5880
   },
   {
     "iata": "MSY",

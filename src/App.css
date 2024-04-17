@@ -179,11 +179,11 @@ input:focus {
   color: #f0faf3;
   border: #90c290 solid 3px;
   width: 60%;
+  transition: 0.3s;
 }
 
 .search-card:hover {
-  background: #90c290;
-  transition: 0.3s;
+  border-width: 10px;
 }
 
 .search-card-header {
@@ -382,4 +382,21 @@ input:focus {
 
 .about-text a {
   color: #90c290;
+}
+
+.search-card-forecast {
+  font-size: 1rem;
+  padding: 5px;
+  display: flex;
+  width: 70%;
+}
+
+.search-card-forecast-year {
+  color: #90c290;
+  padding-left: 5%;
+}
+
+.forecasts {
+  display: flex;
+  flex-direction: column;
 }

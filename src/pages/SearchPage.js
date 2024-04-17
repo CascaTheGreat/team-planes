@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar";
 import SearchCard from "../components/SearchCard";
 import airportData from "../data/airports_data.json";
+import trends from "../data/flights_data.json";
 
 function SearchPage() {
   const [airports, setAirports] = React.useState(airportData);
@@ -51,9 +52,9 @@ function SearchPage() {
           <button
             className="search-load-more"
             onClick={() => {
-              if (airports.length > itemsPerPage) {
-                setAirports(airports.slice(itemsPerPage, itemsPerPage * 2));
-              }
+              setItemsPerPage(itemsPerPage + 5);
+              setAirports(airports.slice(itemsPerPage, itemsPerPage + 5));
+              console.log(airports);
             }}
           >
             Load More

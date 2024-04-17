@@ -1,0 +1,127 @@
+[
+    {
+        "IATA_code": "AUS",
+        "year": "2024",
+        "flights": 12508.9522
+    },
+    {
+        "IATA_code": "AUS",
+        "year": "2025",
+        "flights": 13416.6559
+    },
+    {
+        "IATA_code": "AUS",
+        "year": "2026",
+        "flights": 14201.775
+    },
+    {
+        "IATA_code": "AUS",
+        "year": "2027",
+        "flights": 14846.678
+    },
+    {
+        "IATA_code": "AUS",
+        "year": "2028",
+        "flights": 15340.02
+    },
+    {
+        "IATA_code": "CLT",
+        "year": "2024",
+        "flights": 5785.7266
+    },
+    {
+        "IATA_code": "CLT",
+        "year": "2025",
+        "flights": 5819.6594
+    },
+    {
+        "IATA_code": "CLT",
+        "year": "2026",
+        "flights": 5846.6968
+    },
+    {
+        "IATA_code": "CLT",
+        "year": "2027",
+        "flights": 5866.8318
+    },
+    {
+        "IATA_code": "CLT",
+        "year": "2028",
+        "flights": 5880.064
+    },
+    {
+        "IATA_code": "ATL",
+        "year": "2024",
+        "flights": 219961.15
+    },
+    {
+        "IATA_code": "ATL",
+        "year": "2025",
+        "flights": 226479.85
+    },
+    {
+        "IATA_code": "ATL",
+        "year": "2026",
+        "flights": 233904.86
+    },
+    {
+        "IATA_code": "ATL",
+        "year": "2027",
+        "flights": 242244.35
+    },
+    {
+        "IATA_code": "ATL",
+        "year": "2028",
+        "flights": 251498.88
+    },
+    {
+        "IATA_code": "MIA",
+        "year": "2024",
+        "flights": 10772.8411
+    },
+    {
+        "IATA_code": "MIA",
+        "year": "2025",
+        "flights": 11078.2935
+    },
+    {
+        "IATA_code": "MIA",
+        "year": "2026",
+        "flights": 11540.7144
+    },
+    {
+        "IATA_code": "MIA",
+        "year": "2027",
+        "flights": 12007.1005
+    },
+    {
+        "IATA_code": "MIA",
+        "year": "2028",
+        "flights": 12475.6244
+    },
+    {
+        "IATA_code": "RDU",
+        "year": "2024",
+        "flights": 11024.6754
+    },
+    {
+        "IATA_code": "RDU",
+        "year": "2025",
+        "flights": 11830.0133
+    },
+    {
+        "IATA_code": "RDU",
+        "year": "2026",
+        "flights": 12698.1058
+    },
+    {
+        "IATA_code": "RDU",
+        "year": "2027",
+        "flights": 13628.331
+    },
+    {
+        "IATA_code": "RDU",
+        "year": "2028",
+        "flights": 14620.693
+    }
+]
