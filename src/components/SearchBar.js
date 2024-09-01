@@ -1,9 +1,12 @@
 import React from "react";
 import "../App.css";
 
-function SearchBar({ handler }) {
+function SearchBar({ handler, id }) {
+  if (!id) {
+    id = "searchBar";
+  }
   return (
-    <div className="search-bar">
+    <div className="search-bar" id={id}>
       <input
         type="text"
         placeholder="Search..."

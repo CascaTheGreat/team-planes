@@ -43,7 +43,7 @@ function SearchPage() {
       exit={{ opacity: 0 }}
       className="search-page"
     >
-      <SearchBar handler={setSearch} />
+      <SearchBar handler={setSearch} id="searchPageSearch" />
       <div className="search-card-container">
         {airports.slice(0, itemsPerPage).map((airport, index) => (
           <SearchCard key={index} airport={airport} />

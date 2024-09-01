@@ -36,7 +36,12 @@ function MapPage() {
         }}
         exit={{ opacity: 0 }}
         className="search-page"
-        style={{ position: "absolute", width: "100%", top: "-15px" }}
+        style={{
+          position: "absolute",
+          width: "100%",
+          top: "-15px",
+          height: "auto",
+        }}
       >
         <MapSearchBar handlerFrom={setSource} handlerTo={setDest} />
       </motion.div>
